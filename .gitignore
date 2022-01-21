@@ -1,0 +1,12 @@
+*.xmpi
+*.fls
+*.aux
+*.bcf
+*.fls
+*.fdb_latexmk
+*.blg
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.bbl

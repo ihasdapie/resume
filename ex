@@ -1,23 +1,3 @@
-# resume
-My resume template optimized [^1] for ATS systems, based on [altacv](https://github.com/liantze/AltaCV)
-
-See [altacv](https://github.com/liantze/AltaCV) for more information.
-
-Changes:
-1. Cut down on icons to improve pdf-to-text conversion
-2. Change to a single-column layout
-3. `\itag{asdf}` command to draw an inline "tag"
-4. `\chref` command for hyperlinks
-5. Various changes to `\makecvevent`, etc. to improve pdf-to-text conversion
-
-Example output:
-![](./resume.png)
-
-
-Example pdftotext output:
-```
-
-
 Brian Chen | Student & Aspiring Software Engineer
 Website: chenbrian.ca
 LinkedIn: linkedin.com/in/brianchen28914
@@ -105,34 +85,4 @@ UofT Badminton Club Exec
 • Awards: Schulich Leadership Scholarship nominee, Bert & Greta Quartermaine Badminton Scholarship Recipient, BC District
 Scholarship & BC Achievement Scholarship Recipient, Canada Service Corps Student Service Grant, ESROP-UofT
 
-
-```
-
-
-
-
-
-
-[^1]: Mostly by making sure `pdftotext` output looks the best it can be
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+
