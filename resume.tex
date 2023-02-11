@@ -3,7 +3,7 @@
 %% See http://texdoc.net/pkg/fontawesome5 and http://texdoc.net/pkg/academicons for full list of symbols. You MUST compile with XeLaTeX or LuaLaTeX if you want to use academicons.
 
 % Change the page layout if you need to
-\geometry{left=1.5cm,right=1.5cm,top=1.1cm,bottom=1cm}
+\geometry{left=1cm,right=1cm,top=0.5cm,bottom=0.5cm}
 
 % The paracol package lets you typeset columns of text in parallel
 \usepackage{paracol}
@@ -19,24 +19,44 @@
   \usepackage[default]{lato}
 \fi
 
+% \usepackage[OT1]{fontenc}
+% \renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+% \usepackage{cmbright}
+% \usepackage[OT1]{fontenc}
+
+
+% prevent hyphenation (bad for .txt conversion)
+\usepackage{hypernat}
+\hyphenpenalty 10000
+\exhyphenpenalty 10000
+
+
 % Change the colours if you want to
-\definecolor{MintyGreen}{HTML}{33b884} %{3E0097}
-\definecolor{SlateGrey}{HTML}{2E2E2E}
-\definecolor{LightGrey}{HTML}{666666}
 % \colorlet{name}{black}
-\colorlet{tagline}{MintyGreen}
-\colorlet{heading}{MintyGreen} \colorlet{headingrule}{MintyGreen}
-% \colorlet{subheading}{PastelRed}
-\colorlet{accent}{MintyGreen}
-\colorlet{emphasis}{SlateGrey}
+% \definecolor{MintyGreen}{HTML}{19b879} %  {33b884} 
+\colorlet{MintyGreen}{cyan!70!black}
+\colorlet{AccentPurple}{cyan!50!purple}
+
+\colorlet{accent}{AccentPurple}
+\colorlet{headingrule}{AccentPurple}
+\colorlet{tagline}{AccentPurple}
+\colorlet{link}{AccentPurple!70!blue}
+
+\definecolor{LightGrey}{HTML}{000000}
+\colorlet{subtle}{LightGrey}
 \colorlet{body}{LightGrey}
+
+% \definecolor{SlateGrey}{HTML}{2E2E2E}
+% \colorlet{heading}{MintyGreen}
+% \colorlet{subheading}{PastelRed}
+% \colorlet{emphasis}{SlateGrey}
+% \colorlet{body}{LightGrey}
 
 
 % make pdftotxt output nicer
 \input{glyphtounicode}
 \pdfgentounicode=1
 
-\newcommand{\chref}[3][teal]{\href{#2}{\color{#1}{#3}}}%
 
 
 % Change some fonts, if necessary
@@ -56,20 +76,29 @@
 \vbadness = 10001
 \hfuzz=\maxdimen \tolerance=10000
 
+% disable ligatures for better ats
+\usepackage{microtype}
+\DisableLigatures[f]{encoding = *, family = *} 
+
+% \usepackage{setspace}
+% \setstretch{1.05}
+
 \begin{document}
 \name{Brian Chen}
-\tagline{Student \& Aspiring Software Engineer}
+% \tagline{~~|~~Seeking Summer 2023 Internships}
+\tagline{}
 %% You can add multiple photos on the left or right
 % \photoL{2cm}{Yacht_High,Suitcase_High}
 \personalinfo{%
+  \email{example@example.com}
   \homepage{chenbrian.ca}
-  \linkedin{linkedin.com/in/brianchen28914}
   \github{github.com/ihasdapie} 
-  \address{Vancouver, BC \& Toronto, ON Canada}
-  \email{brianchen.chen [at] mail.utoronto.ca}
-  \phone{+x xxx xxx xxxx}
+  \linkedin{linkedin.com/in/brianchen28914}
+  \phone{+x xxx-xxx-xxxx}
   %% \printinfo{symbol}{detail}[optional hyperlink prefix]
 }
+
+
 
 \makecvheader
 
@@ -79,83 +108,142 @@
 
 \raggedright
 
+% \cvsection{Summary}
+% Third year Engineering Science student in Computer Engineering major at the University of Toronto with a demonstrated passion for software engineering, who is a big Linux \& open source aficionado and avid badminton player.
+% I have worked in development and leadership positions in industry, research, and my own non-profit startup. 
+% Interested in working in a community to identify and resolve problems in the world around us.
 
-\cvsection{Summary}
-Current Engineering Science/Electrical \& Computer Engineering student at the University of Toronto with a demonstrated passion for software engineering.
-A big Linux \& command line aficionado and avid badminton player.
-I have worked in development and leadership positions in industry, research, and my own non-profit startup. 
-Interested in working in a community to identify and resolve problems in the world around us.
-
-
-\cvsection{Education}
-\cvevent{B.A.Sc in Engineering Science}{University of Toronto}{2020 -- 2025}{Toronto, ON}
-Electrical and Computer Engineering major, Machine Intelligence minor. cGPA 3.73, Dean's List.
-
+\cvsection{Education}{}
+\cveventedu{Computer Engineering}{University of Toronto}{2020 -- 2024}{Toronto, ON}
+\begin{itemize}
+  \item Third year B.A.S.c in Engineering Science; Computer Engineering major, Robotics minor. Dean's list, 3.65 GPA
+  \item \textbf{Coursework:} 
+    \footnotesize{
+     Computer Security,                                % ECE568
+     Operating Systems,                                % ECE353
+     Advanced Algorithm Design, % Advanced Algorithm Design  % CSC473,
+     Machine Learning,                                 % ECE421
+     Software Engineering,                             % ECE444
+     Foundations of Computing,                         % ECE358
+     Computer organization,                            % ECE352
+     Control Theory,                                   % ECE356
+     Semiconductor Devices,                            % ECE350
+     Signal Analysis,              % ECE355
+     Electronics,                                       % ECE360
+     % Communication Systems,                            % ECE363
+     Economics, Engineering \& Law
+  } 
+\end{itemize}
 % \cvevent{}{Langara College}{}{}
 % Concurrent enrolment with studies at Eric Hamber Secondary
 % \cvevent{}{Eric Hamber Secondary}{2015 -- 2020}{Vancouver, BC}
 
-\cvsection{Experience}
 
-\cvevent{Software Developer}{BC Parks Foundation}{July 2020 -- September 2021}{Vancouver, BC}
+
+\cvsection{Experience}{}
+
+% (S)ituation (T)ask (A)ction (R)esult
+\cvevent{Software Engineering Intern}{Open Source Robotics Foundation}{May 2022 -- September 2022}{Mountain View, CA}{\hspace{1cm}[ \textit{c, c++, python, ROS2, open source, Linux, distributed systems} ]}
 \begin{itemize}
-  \item Coordinated with stakeholders to design and implement novel `DiscoverParks' platform and data collection/visualization solution for parks in British Columbia with \itag{python}, \itag{Django}, \itag{PostgreSQL}, \itag{VueJS}, \itag{docker}, and \itag{AWS}; currently in private beta.
-  \item Built and maintained site backend, internal content management interface, and early-stage front-end experiences
-  \item Identified and addressed two key bottlenecks in content management strategy, \textbf{improved efficiency by >10x}.
+  \item Developed \textbf{60+ features and bugfixes} in collaboration with \textbf{NASA} while balancing open source community feedback for the \chref{https://docs.ros.org/en/rolling/}{ROS2} and \chref{https://gazebosim.org/home}{Gazebo} packages powering the \textbf{\chref{https://www.nasa.gov/viper}{VIPER} lunar rover's} critical ground control and autonomy systems -- \textit{leaving earth in 2024!}
+\item \textbf{Co-authored \chref{https://github.com/ros-infrastructure/rep/pull/360}{REP2012: Service Introspection} standard} proposing new core functionality for \textbf{runtime introspection and recording of ROS2 services}. Designed, built, and deployed reference implementation with few iterations to \textbf{unblock tens of thousands of users while balancing stakeholder priorities} from the open source community, Open Robotics, and the Technical Steering Committee.
+    % This \textbf{widely-requested feature} garnered strong community support because it 
+  \item Onboarded quickly on ROS2 \& Gazebo codebases; improved the development experience for \textbf{800,000+ users} by \textbf{fixing race conditions} in ROS2, starting a mypy compliance initiative, adding an AsyncParameterClient interface, and \textbf{improving test coverage}
+  
 
+    % 10th most commented PR on the repo of all time lmao
+    % well received by community
+  % \item Streamlined editor integration and user experience by spearheading initiative to make rclpy \texttt{mypy} compliant
+  %   Resolved race conditions in core rclpy client library,
+  %   implemented \texttt{rclpy} AsyncParameterClient interface
+  %   writing tut, docs, etc/
+  % \item Core ROS2 \& Gazebo maintenance tasks; reducing message spam, resolving deadlocks in specific use cases (rclpy shutdown), rosbag improvements, typing fixes, empy templating syntax
+  % \item Tutorials, docs, changed docs theme
 \end{itemize}
 
-\cvevent{Teaching Assistant}{Division of Engineering Science - University of Toronto}{September 2021 - Present} {Toronto, ON}
+{\color{accent}\hrule \vspace{0.1cm}}
+\cvevent{Autonomy Software Lead}{aUToronto (University of Toronto Self-Driving Car Team)}{September 2020 -- June 2023}{Toronto, ON}{[ \textit{c++, python, Simulink, PyTorch, TensorRT, CI/CD, ROS2} ]}
 \begin{itemize}
-  \item Helped teach ESC180: Introduction to Programming and ESC190: Algorithms and Data Structures
-  \item Prepared tutorial content and lead tutorials of 25 students; assisted labs and course evaluations. Review content is public at \chref{https://chenbrian.ca/posts/2021/teaching/}{chenbrian.ca/posts/2021/teaching}
+  \item \textbf{Leading 20+ students} across trajectory motion planning, automated simulation testing, and deep learning acceleration teams to build a Level 4 autonomous vehicle for \chref{https://www.autodrive.utoronto.ca/}{aUToronto}'s entry to the \chref{https://www.sae.org/attend/student-events/autodrive-challenge-series2/}{AutoDrive Challenge}. \textbf{Our team has won 1st place for the past 5 years}
+  \item \textbf{Worked to a leadership position} through proactive self-learning, mentoring new members, and taking on ownership of projects
+  \item Designing and implementing \textbf{time-critical trajectory motion planning} solution for our vehicle. \textbf{Led solution convergence process} to pick design through decision matrices weighing literature review, compute restrictions, failure modes, and team buy-in
+    % rrt, a* waypoint, centerline, function opt
+    % Designed \textbf{time-critical} vehicle \textbf{trajectory motion planning} algorithms to generate kinematically feasible trajectories using hybrid A*
+  \item Accelerated YOLOv5 by 20x with a TensorRT ML pipeline to \textbf{detect objects in real-time} across 4 cameras with \textbf{millisecond latency}
+  \item \textbf{Reduced developer testing time by 10x} by developing "aUToTest", a parallelized automated simulation integration test framework.
+  \item Built AI sensor noise modelling tool on CycleGAN to improve Sim2Real transfer, build test confidence, and \textbf{deliver simulation value}
+\end{itemize}
+% \vspace{-0.3cm}
+    % \item Presented work at 2021 Vector Institute Mobility Symposium \& 2021 UofT Robotics Institute AV workshop
 
+{\color{accent}\hrule \vspace{0.1cm}}
+\cvevent{Fullstack Software Developer}{BC Parks Foundation}{July 2020 -- September 2021}{Vancouver, BC}{[ \textit{python (Django), PostgreSQL, Vue.js, fullstack, GIS} ]}
+\begin{itemize}
+  \item \textbf{Translated multiple stakeholder needs into functional requirements and practical tasks} to build fullstack `DiscoverParks' webapp and data collection solution. I was responsible for the internal content management interface, backend, and front-end experiences
+  \item Applied profiling to rearchitect database to better model user data and remove cycles; \textbf{improved code health and query speed}
 \end{itemize}
 
-\cvevent{Research Intern}{Intelligent Sensory Microsystems Lab - University of Toronto} {May 2021 -- Present} {Toronto, ON}
+{\color{accent}\hrule \vspace{0.1cm}}
+\cvevent{Teaching Assistant}{Division of Engineering Science - University of Toronto}{September 2021 - June 2022} {Toronto, ON}{[ \textit{c, python} ]}
 \begin{itemize}
-  \item Researched novel input encoding and gradient thresholding methods for optimizing \itag{memristor} crossbar machine learning accelerator in-situ performance using \itag{\chref{https://github.com/coreylammie/MemTorch}{MemTorch}} and \itag{PyTorch}.
-  \item Identified novel `thresholding' concept which \textbf{reduces the demand on crossbar devices by up to 90\%}, greatly improving longevity and reducing power consumption
-  \item \itag{First author paper} on the aforementioned research pending submission
+  \item \textbf{Taught \textasciitilde50 undergrads computer science} from `Hello World' to dynamic programming and Dijkstra's algorithm (\chref{https://www.cs.toronto.edu/~guerzhoy/180/}{ESC180}, \chref{https://engineering.calendar.utoronto.ca/course/esc190h1}{ESC190})
+\end{itemize}
+% \vspace{-0.05cm}
+
+{\color{accent}\hrule \vspace{0.1cm}}
+\cvevent{Co-Founder \& Developer}{GrocerCheck Foundation}{April 2020 -- December 2020}{Vancouver, BC}{[ \textit{python (Django), PostgreSQL, aws} ]}
+% TODO(ihasdapie): Add mapping keyword and geographic
+\begin{itemize}
+  \item \textbf{Created \chref{https://grocercheck.ca}{grocercheck.ca}}, a webapp that leverages big data to \textbf{help 20,000+ daily users \#ShopSafeStaySafe} by finding the least busy place to shop for groceries in \textbf{15,000+} stores across North America in response to the COVID-19 pandemic
+  \item Founded GrocerCheck Foundation, a \textbf{registered non-profit} to better scale project; secured support valued at \textbf{\$200,000+}
+  \item \textbf{Architected and deployed horizontally scalable distributed system architecture} to meet unexpected growth and demand
 \end{itemize}
 
-\cvevent{GrocerCheck Website; Co-Founder \& Developer}{GrocerCheck Foundation}{April 2020 -- December 2020}{}
+{\color{accent}\hrule \vspace{0.1cm}}
+\cvevent{Research Intern}{Intelligent Sensory Microsystems Lab - University of Toronto} {Feb 2021 -- September 2021} {Toronto, ON}{\hspace{-1cm}[ \textit{python (PyTorch), neuromorphic computers, supercomputers} ]}
 \begin{itemize}
-  \item Created \chref{https://grocercheck.ca}{grocercheck.ca}, a website that aggregates and visualizes grocery story busyness to help users shop more safely for groceries across \textbf{>15,000} stores in 10+ major cities
-  \item Founded GrocerCheck Foundation, a \textbf{registered non-profit} to better scale project; secured support, funding, grants, and partnerships valued at \textbf{>\$200,000}, supporting >20,000 daily users.
-  \item Designed and implemented custom \chref{https://github.com/GrocerCheck/LivePopularTimes}{LivePopularTimes} scraping library to power backend
+  \item Innovated novel `thresholding' concept which \textbf{improves longevity and power consumption} characteristics of neuromorphic \chref{https://en.wikipedia.org/wiki/Memristor}{memristor} crossbar \textbf{machine learning accelerators} during in-situ training by \textbf{up to 90\%}. \textbf{First author paper} under review
+% \item First author paper on novel `thresholding' concept reducing in-situ training load on memristor crossbar machine learning accelerators by up to 90\% using \chref{https://github.com/coreylammie/MemTorch}{MemTorch} and PyTorch.
+% expand on this and have two copies depending on job
+%   \item Researched novel input encoding and gradient thresholding methods for optimizing memristor crossbar machine learning
+% accelerator in-situ performance using MemTorch and PyTorch
+% \item First author paper on novel ‘thresholding’ concept which reduces the demand on crossbar devices by up to 90%, greatly
+% improving longevity and reducing power consumption; currently pending submission
 \end{itemize}
 
+% \vspace{-0.2cm}
 
-
-
-
-
-\cvevent{Simulation \& Testing Co-lead}{aUToronto - UofT's Self Driving Car Team}{September 2020 -- Present}{Toronto, ON}
+\cvsection{Skills}{}
 \begin{itemize}
-  \item Leading multidisciplinary team of 14 students across 4 project groups to develop superior automated tooling for autonomous vehicle development. Our team, \chref{https://www.autodrive.utoronto.ca/}{aUToronto} has won the SAE Autodrive Challenge for four consecutive years.
-  \item \textbf{\textit{"aUToTest"}}, automated simulation integration test framework for autonomous vehicles, with \itag{python}, \itag{matlab}, \itag{simulink}, \itag{docker}, \itag{ROS/ROS2}, and \itag{unreal engine}, enabling asynchronous testing \& reducing developer testing time by >1000\%
-  \item \textbf{\textit{"aUToNoise"}} Machine learning - augmented sensor noise modelling for improved Sim2Real transfer using \itag{CycleGAN}
-  \item \textbf{\textit{"aUToViz"}} test result visualization framework and \itag{Jenkins}/\itag{GitLab} \itag{CI/CD} integrations for aUToronto software stack
-  \item Presented work at 2021 Vector Institute Mobility Symposium \& 2021 UofT Robotics Institute AV workshop
+  \item \textbf{Languages}:
+    c++, python, c, go, rust, 
+    lua, javascript, html5, css, java, bash,
+    SQL, verilog, MATLAB/simulink, assembly
+   \item \textbf{Frameworks \& Libraries}:
+     ROS, ROS2, numpy, scipy, OpenCV, Pandas,
+     Jenkins, CI/CD, Docker, LXD, % LXC/LXD,
+     % redis,  
+     flask, Django, Android,
+     % Android, % mobile,
+     PyTorch, Tensorflow, Keras, TensorRT, CUDA,
+     PostgreSQL, MySQL, MongoDB,
+     NodeJS, VueJS, ThreeJS,
+     FPGA,  Cloud,
+     AWS, GCP, git
+   \item \textbf{Other}: Linux, UNIX, vim, debugging,
+     object-oriented programming, embedded,
+     systems software, 
+     infrastructure, databases,
+     REST APIs, MapReduce,
+     user experience,
+     % arduino,
+     Fusion360,
+     Googling, 
+     % learning on-the-fly,
+     technical writing and communication
 
+     % TODO(ihasdapie): Demonstrate able to craft multi-functional requirements and translate them into practical engineering t
 \end{itemize}
-
-\cvsection{Projects/Other}
-
-\begin{itemize}
-  \item For more project information and demos please visit \chref{https://chenbrian.ca/posts/2021/projects/}{chenbrian.ca/posts/2021/projects}
-  \item \textbf{\chref{https://github.com/btrnt}{\textit{``butternut"}}}, a chrome extension implementing \chref{http://gltr.io/}{gltr} that detects AI-generated text. nwHacks bronze, KPMG Data Analysis \& Groundswell Salesforce Award
-  \item \textbf{\chref{https://github.com/UTMIST/humerus}{\textit{``the Humerus Bot"}}}, an applied \itag{NLP}{Natural Language Processing} project to write a bot that can \textit{win} Cards Against Humanity
-  \item \textbf{\chref{https://github.com/ihasdapie/dotfiles}{\textit{dotfiles}}}, my extensive Linux user application and \chref{https://github.com/ihasdapie/dotfiles/tree/main/nvim}{neovim} configurations with various in-process plugins
-  \item \textbf{Badminton}: ClearOne Nationals Team, Eric Hamber Provincial Team Captain \& Assistant Coach, 2018 Junior Nationals Finalist, UofT Badminton Club Exec
-  \item \textbf{Theatre}: Wrote and directed full-length show: \textit{`To Bleach a Pigeon'}. Oversaw actors, crew, set design, and creative process
-  \item \textbf{Awards}: Schulich Leadership Scholarship nominee, Bert \& Greta Quartermaine Badminton Scholarship Recipient, BC District Scholarship \& BC Achievement Scholarship Recipient, Canada Service Corps Student Service Grant, ESROP-UofT
-% \item \textbf{\textit{``SigVer"}}, a >90\% accurate \textbf{Siamese} neural network for secure signature verification
-\end{itemize}
-
-
-
 
 % \cvsection{Programming Languages}
 % \cvtag{Python} \cvtag{c/c++}  \cvtag{rust}
@@ -174,6 +262,27 @@ Electrical and Computer Engineering major, Machine Intelligence minor. cGPA 3.73
 % \cvtag{FOSS} \cvtag{Linux} \cvtag{\texttt{vim}}
 % \cvtag{Reliability} \cvtag{AI} \cvtag{Autonomous Vehicles} 
 % \cvtag{Badminton}
+
+
+
+\cvsection{Projects, Awards, \& More}{\textit{For demos, please see \chref{https://chenbrian.ca/posts/projects/}{chenbrian.ca/posts/projects}}}
+
+\begin{itemize}
+  \item \textbf{\chref{https://github.com/btrnt}{\textit{``butternut"}}}: Implementing \chref{http://gltr.io/}{gltr} on \chref{https://github.com/salesforce/ctrl}{CTRL} to combat AI-generated text. nwHacks bronze, KPMG Data Analysis \& Salesforce Award.
+  \item \textbf{\chref{https://github.com/UTMIST/humerus}{\textit{``the Humerus Bot"}}}: Directed project with \chref{https://utmist.gitlab.io/}{UTMIST} to build a NLP bot designed to \textit{win} Cards Against Humanity
+  \item \textbf{\chref{chenbrian.ca/posts/2021/teaching/}{Teaching}}: Review content I prepared for my students, including a \chref{https://mybinder.org/v2/gh/ihasdapie/teaching/HEAD}{custom Jupyter notebook} with c kernel for interactive learning
+  \item \textbf{Awards}: Schulich Leadership Scholarship nominee, Bert \& Greta Quartermaine Badminton Scholarship Recipient, BC District Scholarship \& BC Achievement Scholarship Recipient, Canada Service Corps Student Service Grant, ESROP-UofT research grant
+  % \item \textbf{\chref{https://github.com/ihasdapie/dotfiles}{\textit{dotfiles}}}: my extensive Linux user application and \chref{https://github.com/ihasdapie/dotfiles/tree/main/nvim}{neovim} configurations with various in-process plugins
+  \item \textbf{Badminton}: ClearOne Nationals Team, 2018 Junior Nationals Finalist, Eric Hamber Provincial Team Captain, \chref{https://www.uoftbadmintonclub.com/}{UTBC} Exec
+  \item \textbf{Theatre}: Wrote and directed full-length show: \textit{`To Bleach a Pigeon'}. Oversaw actors, crew, set design, and creative process
+% \item \textbf{\textit{``SigVer"}}, a >90\% accurate \textbf{Siamese} neural network for secure signature verification
+\end{itemize}
+
+
+
+
+
+
 
 
 

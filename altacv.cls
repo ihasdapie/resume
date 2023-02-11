@@ -1,11 +1,11 @@
 %%%%%%%%%%%%%%%%%
-% This is altacv.cls (v1.0) which is a modified version of the 
+% This is ultacv.cls (v1.0) which is a modified version of the 
 % altacv.cls class (the copyright notice for which is below)
 
 % Modifications are: 
 % 1. Migration to a single-column format
 % 2. Rearrangement of header to a more compact format
-% 3. Renaming to altacv
+% 3. Renaming to ultacv
 %%%%%%%%%%%%%%%%%
 
 
@@ -143,15 +143,22 @@
 \RequirePackage{xcolor}
 
 \colorlet{accent}{blue!70!black}
+\colorlet{link}{blue!50!black}
 \colorlet{emphasis}{black}
 \colorlet{heading}{black}
 \colorlet{headingrule}{black}
 \colorlet{subheading}{emphasis}
-\colorlet{body}{black!80!white}
+\colorlet{body}{black!85!white}
 \colorlet{name}{heading}
 \colorlet{tagline}{accent}
+\colorlet{subtle}{red!10!blue}
+
 \newcommand{\itemmarker}{{\small\textbullet}}
 \newcommand{\ratingmarker}{\faCircle}
+
+
+% Prettier hrefs
+\newcommand{\chref}[3][link]{\href{#2}{\color{#1}{\underline{#3}}}}%
 
 \RequirePackage{tikz}
 \usetikzlibrary{arrows}
@@ -195,13 +202,13 @@
 \ExplSyntaxOn
 \NewDocumentCommand{\printinfo}{m m o}{%
   \IfNoValueTF{#3}{%
-    \mbox{\textcolor{accent}{\normalfont #1}~\utffriendlydetokenize{#2}\hspace{2em}}%
+    \mbox{\textcolor{emphasis}{\normalfont\bfseries #1}~\utffriendlydetokenize{#2}\hspace{0.5em}}%
   }{%
      \if@withhyper%
-      \mbox{\textcolor{accent}{\normalfont #1}\href{#3}{\utffriendlydetokenize{#2}}\hspace{2em}}
+     \mbox{\textcolor{emphasis}{\normalfont\bfseries #1}\color{link}{\underline{\href{#3}{\utffriendlydetokenize{#2}}}}\hspace{0.5em}}
      \else%
        \ClassWarning{Please specify [withhyper] option to enable hyperlinks. Printing out full hyperlink prefix #1 for now.}%
-      \mbox{\textcolor{accent}{\normalfont #1}~{\utffriendlydetokenize{#3#2}}\hspace{2em}}%
+      \mbox{\textcolor{emphasis}{\normalfont\bfseries #1}~{\utffriendlydetokenize{#3#2}}\hspace{0.5em}}%
      \fi%
   }%
 }%
@@ -225,12 +232,12 @@
 \newcommand{\name}[1]{\def\@name{#1}}
 \newcommand{\tagline}[1]{\def\@tagline{#1}}
 \newcommand{\personalinfo}[1]{\def\@personalinfo{#1}}
-\NewInfoField{email}{e-mail: }[mailto:]
-\NewInfoField{phone}{Phone: }
-\NewInfoField{homepage}{Website: }[https://]
-\NewInfoField{linkedin}{LinkedIn: }[https://]
-\NewInfoField{github}{GitHub: }[https://]
-\NewInfoField{address}{Address: }
+\NewInfoField{email}{}[mailto:]
+\NewInfoField{phone}{}
+\NewInfoField{homepage}{}[https://]
+\NewInfoField{linkedin}{}[https://]
+\NewInfoField{github}{}[https://]
+\NewInfoField{address}{}
 
 % v1.2: Support for multiple photos
 \newlength{\altacv@photos@width}
@@ -274,26 +281,30 @@
 \let\photo\photoR
 
 \newcommand{\namefont}{\huge\bfseries}
-\newcommand{\taglinefont}{\large\bfseries}
+\newcommand{\taglinefont}{\normalsize}
 \newcommand{\personalinfofont}{\small\bfseries}
-\newcommand{\cvsectionfont}{\large\bfseries}
-\newcommand{\cvsubsectionfont}{\large\bfseries}
+\newcommand{\cvsectionfont}{\normalsize\bfseries}
+\newcommand{\cvsubsectionfont}{\normalsize\bfseries}
 
 \newcommand{\makecvheader}{%
-  % \begingroup
-  % \raggedright%
-  {\namefont\color{name}\@name}~~|~~{\taglinefont\color{tagline}\@tagline}\par\medskip
+  \begingroup
+  \raggedright%
+  {\begin{center}\namefont\color{name}
+      \@name
+      {\taglinefont\color{tagline}\@tagline}
+  \end{center}}   
+  \vspace{-0.2cm}
   {\personalinfofont\@personalinfo}
-  % \endgroup\medskip
+  \smallskip
+  \endgroup
 }
 
 \renewenvironment{quote}{\color{accent}\itshape\large}{\par}
 
-\newcommand{\cvsection}[2][]{%
-  \bigskip%
+\newcommand{\cvsection}[3][]{%
   \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
-  {\color{heading}\cvsectionfont\MakeUppercase{#2}}\\[-1ex]%
-  {\color{headingrule}\rule{\linewidth}{2pt}\par}\medskip
+  {\color{heading}\cvsectionfont\MakeUppercase{#2}} \hfill {\small#3} \\[-1ex]%
+  {\color{headingrule}\rule{\linewidth}{2pt}\par}\smallskip
 }
 
 \newcommand{\cvsubsection}[1]{%
@@ -302,18 +313,43 @@
 }
 
 % v1.1.4: fixes inconsistent font size
-\newcommand{\cvevent}[4]{%
+\newcommand{\cvevent}[5]{%
+   % \begin{tabular*}{\linewidth}{@{}@{\extracolsep{\fill}}lcr@{}}
+   % \underline{
   \begin{tabular*}{\linewidth}{@{}@{\extracolsep{\fill}}lcr@{}}
-    {\large\color{emphasis}#1} & \normalsize\textbf{\color{accent}#2} & \color{body}~#3 \\
-  \end{tabular*}
-  \par\smallskip
+    \color{emphasis}\bfseries#1 & \hspace{-2cm} \small{#5}   & #3 \\ 
+     \small#2 & &  \textit{\small#4} \\
+   \end{tabular*}
+   % }
 
-  % Don't bother with location & change to tabular format
-  % {\large\color{emphasis}#1}
-  % \normalsize~@~\textbf{\color{accent}#2} \color{body}~#3
-  % \par \medskip
-  % \ifstrequal{#3}{}{}{{\small\makebox[0.4\linewidth][l]{~#3}}}%
-  % \ifstrequal{#4}{}{}{{\small\makebox[0.4\linewidth][l]{~#4}}}\par\medskip
+  % {\color{headingrule}\vspace{-1em}\rule{\linewidth}{0.02cm}}
+
+%   \begin{tabular}{\linewidth}{l r}
+%     \large\color{emphasis}\textbf{#2} & #4 \\
+%     \normalsize\textbf{\color{accent}#1} & #3 \\
+%   \end{tabular}
+
+  \par\smallskip
+}
+
+% v1.1.4: fixes inconsistent font size
+\newcommand{\cveventedu}[4]{%
+   % \begin{tabular*}{\linewidth}{@{}@{\extracolsep{\fill}}lcr@{}}
+   % \underline{
+   \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lr@{}}
+     \color{emphasis}\bfseries#1 & #3 \\ 
+     \small#2 &  \textit{\small#4} \\
+   \end{tabular*}
+   % }
+
+  % {\color{headingrule}\vspace{-1em}\rule{\linewidth}{0.02cm}}
+
+%   \begin{tabular}{\linewidth}{l r}
+%     \large\color{emphasis}\textbf{#2} & #4 \\
+%     \normalsize\textbf{\color{accent}#1} & #3 \\
+%   \end{tabular}
+
+  \par\smallskip
 }
 
 \newcommand{\cvachievement}[3]{%
@@ -327,6 +363,7 @@
 \newcommand{\cvtag}[1]{%
   \tikz[baseline]\node[anchor=base,draw=body!30,rounded corners,inner xsep=1ex,inner ysep =0.75ex,text height=1.5ex,text depth=.25ex]{#1};
 }
+
 
 \newcommand{\itag}[1]{%
   \tikz[baseline]\node[anchor=base,draw=body!30,rounded corners,inner xsep=0.25ex,inner ysep =0.75ex,text height=1.25ex,text depth=.125ex]{#1};

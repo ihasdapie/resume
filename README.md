@@ -1,5 +1,8 @@
 # resume
-My resume template optimized [^1] for ATS systems, based on [altacv](https://github.com/liantze/AltaCV)
+My resume template optimized [^1] for ATS systems, based on [altacv](https://github.com/liantze/AltaCV). 
+
+See `pdftotext` output in `resume.txt` for a quick overview.
+
 
 See [altacv](https://github.com/liantze/AltaCV) for more information.
 
@@ -16,96 +19,127 @@ Example output:
 
 Example pdftotext output:
 ```
+Brian Chen
+example@example.com chenbrian.ca github.com/ihasdapie linkedin.com/in/brianchen28914
 
-
-Brian Chen | Student & Aspiring Software Engineer
-Website: chenbrian.ca
-LinkedIn: linkedin.com/in/brianchen28914
-GitHub: github.com/ihasdapie
-Address: Vancouver, BC & Toronto, ON Canada
-e-mail: brianchen.chen [at] mail.utoronto.ca
-Phone: +x xxx xxx xxxx
-
-SUMMARY
-Current Engineering Science/Electrical & Computer Engineering student at the University of Toronto with a demonstrated passion for software engineering. A big Linux & command line aﬁcionado and avid badminton player. I have
-worked in development and leadership positions in industry, research, and my own non-proﬁt startup. Interested in
-working in a community to identify and resolve problems in the world around us.
++x xxx-xxx-xxxx
 
 EDUCATION
-B.A.Sc in Engineering Science
+2020 – 2024
 
-2020 – 2025
-
+Computer Engineering
 University of Toronto
-Electrical and Computer Engineering major, Machine Intelligence minor. cGPA 3.73, Dean’s List.
+
+Toronto, ON
+
+• Third year B.A.S.c in Engineering Science; Computer Engineering major, Robotics minor. Dean’s list, 3.65 GPA
+• Coursework: Computer Security, Operating Systems, Advanced Algorithm Design, Machine Learning, Software Engineering, Foundations of
+Computing, Computer organization, Control Theory, Semiconductor Devices, Signal Analysis, Electronics, Economics, Engineering & Law
 
 EXPERIENCE
-Software Developer
+Software Engineering Intern
 
-BC Parks Foundation
+[ c, c++, python, ROS2, open source, Linux, distributed systems ]
+
+Open Source Robotics Foundation
+
+May 2022 – September 2022
+Mountain View, CA
+
+• Developed 60+ features and bugfixes in collaboration with NASA while balancing open source community feedback for the ROS2 and
+Gazebo packages powering the VIPER lunar rover’s critical ground control and autonomy systems – leaving earth in 2024!
+• Co-authored REP2012: Service Introspection standard proposing new core functionality for runtime introspection and recording of
+ROS2 services. Designed, built, and deployed reference implementation with few iterations to unblock tens of thousands of users
+while balancing stakeholder priorities from the open source community, Open Robotics, and the Technical Steering Committee.
+• Onboarded quickly on ROS2 & Gazebo codebases; improved the development experience for 800,000+ users by fixing race conditions
+in ROS2, starting a mypy compliance initiative, adding an AsyncParameterClient interface, and improving test coverage
+
+Autonomy Software Lead
+[ c++, python, Simulink, PyTorch, TensorRT, CI/CD, ROS2 ]
+aUToronto (University of Toronto Self-Driving Car Team)
+
+September 2020 – June 2023
+Toronto, ON
+
+• Leading 20+ students across trajectory motion planning, automated simulation testing, and deep learning acceleration teams to build a
+Level 4 autonomous vehicle for aUToronto’s entry to the AutoDrive Challenge. Our team has won 1st place for the past 5 years
+• Worked to a leadership position through proactive self-learning, mentoring new members, and taking on ownership of projects
+• Designing and implementing time-critical trajectory motion planning solution for our vehicle. Led solution convergence process to
+pick design through decision matrices weighing literature review, compute restrictions, failure modes, and team buy-in
+• Accelerated YOLOv5 by 20x with a TensorRT ML pipeline to detect objects in real-time across 4 cameras with millisecond latency
+• Reduced developer testing time by 10x by developing "aUToTest", a parallelized automated simulation integration test framework.
+• Built AI sensor noise modelling tool on CycleGAN to improve Sim2Real transfer, build test confidence, and deliver simulation value
+
+Fullstack Software Developer
 
 July 2020 – September 2021
 
-• Coordinated with stakeholders to design and implement novel ‘DiscoverParks’ platform and data collection/visualization solution for parks in British Columbia with python , Django , PostgreSQL , VueJS , docker , and AWS ; currently in private beta.
-• Built and maintained site backend, internal content management interface, and early-stage front-end experiences
-• Identiﬁed and addressed two key bottlenecks in content management strategy, improved eﬃciency by >10x.
+[ python (Django), PostgreSQL, Vue.js, fullstack, GIS ]
+
+BC Parks Foundation
+
+Vancouver, BC
+
+• Translated multiple stakeholder needs into functional requirements and practical tasks to build fullstack ‘DiscoverParks’ webapp and
+data collection solution. I was responsible for the internal content management interface, backend, and front-end experiences
+• Applied profiling to rearchitect database to better model user data and remove cycles; improved code health and query speed
+
+September 2021 - June 2022
+
+[ c, python ]
 
 Teaching Assistant
-
-September 2021 - Present
-
 Division of Engineering Science - University of Toronto
 
-• Helped teach ESC180: Introduction to Programming and ESC190: Algorithms and Data Structures
-• Prepared tutorial content and lead tutorials of 25 students; assisted labs and course evaluations. Review content is public at
-chenbrian.ca/posts/2021/teaching
+Toronto, ON
 
-Research Intern
+• Taught ~50 undergrads computer science from ‘Hello World’ to dynamic programming and Dijkstra’s algorithm (ESC180, ESC190)
 
-May 2021 – Present
-
-Intelligent Sensory Microsystems Lab - University of Toronto
-
-• Researched novel input encoding and gradient thresholding methods for optimizing memristor crossbar machine learning accelerator in-situ performance using MemTorch and PyTorch .
-• Identiﬁed novel ‘thresholding’ concept which reduces the demand on crossbar devices by up to 90%, greatly improving
-longevity and reducing power consumption
-• First author paper on the aforementioned research pending submission
-
-GrocerCheck Website; Co-Founder & Developer GrocerCheck Foundation
+Co-Founder & Developer
 
 April 2020 – December 2020
 
-• Created grocercheck.ca, a website that aggregates and visualizes grocery story busyness to help users shop more safely for groceries across >15,000 stores in 10+ major cities
-• Founded GrocerCheck Foundation, a registered non-proﬁt to better scale project; secured support, funding, grants, and partnerships valued at >$200,000, supporting >20,000 daily users.
-• Designed and implemented custom LivePopularTimes scraping library to power backend
+[ python (Django), PostgreSQL, aws ]
 
-Simulation & Testing Co-lead
+GrocerCheck Foundation
 
-aUToronto - UofT’s Self Driving Car Team
+Vancouver, BC
 
-September 2020 – Present
+• Created grocercheck.ca, a webapp that leverages big data to help 20,000+ daily users #ShopSafeStaySafe by finding the least busy
+place to shop for groceries in 15,000+ stores across North America in response to the COVID-19 pandemic
+• Founded GrocerCheck Foundation, a registered non-profit to better scale project; secured support valued at $200,000+
+• Architected and deployed horizontally scalable distributed system architecture to meet unexpected growth and demand
+[ python (PyTorch), neuromorphic computers, supercomputers ]
+Intelligent Sensory Microsystems Lab - University of Toronto
 
-• Leading multidisciplinary team of 14 students across 4 project groups to develop superior automated tooling for autonomous
-vehicle development. Our team, aUToronto has won the SAE Autodrive Challenge for four consecutive years.
-• "aUToTest", automated simulation integration test framework for autonomous vehicles, with python , matlab , simulink ,
-docker , ROS/ROS2 , and unreal engine , enabling asynchronous testing & reducing developer testing time by >1000%
-• "aUToNoise" Machine learning - augmented sensor noise modelling for improved Sim2Real transfer using CycleGAN
-• "aUToViz" test result visualization framework and Jenkins / GitLab CI/CD integrations for aUToronto software stack
-• Presented work at 2021 Vector Institute Mobility Symposium & 2021 UofT Robotics Institute AV workshop
+Research Intern
 
-PROJECTS/OTHER
-• For more project information and demos please visit chenbrian.ca/posts/2021/projects
-• “butternut", a chrome extension implementing gltr that detects AI-generated text. nwHacks bronze, KPMG Data Analysis &
-Groundswell Salesforce Award
-• “the Humerus Bot", an applied NLP Natural Language Processing project to write a bot that can win Cards Against Humanity
-• dotﬁles, my extensive Linux user application and neovim conﬁgurations with various in-process plugins
-• Badminton: ClearOne Nationals Team, Eric Hamber Provincial Team Captain & Assistant Coach, 2018 Junior Nationals Finalist,
-UofT Badminton Club Exec
-• Theatre: Wrote and directed full-length show: ‘To Bleach a Pigeon’. Oversaw actors, crew, set design, and creative process
+Feb 2021 – September 2021
+Toronto, ON
+
+• Innovated novel ‘thresholding’ concept which improves longevity and power consumption characteristics of neuromorphic memristor
+crossbar machine learning accelerators during in-situ training by up to 90%. First author paper under review
+
+SKILLS
+• Languages: c++, python, c, go, rust, lua, javascript, html5, css, java, bash, SQL, verilog, MATLAB/simulink, assembly
+• Frameworks & Libraries: ROS, ROS2, numpy, scipy, OpenCV, Pandas, Jenkins, CI/CD, Docker, LXD, flask, Django, Android, PyTorch,
+Tensorflow, Keras, TensorRT, CUDA, PostgreSQL, MySQL, MongoDB, NodeJS, VueJS, ThreeJS, FPGA, Cloud, AWS, GCP, git
+• Other: Linux, UNIX, vim, debugging, object-oriented programming, embedded, systems software, infrastructure, databases, REST APIs,
+MapReduce, user experience, Fusion360, Googling, technical writing and communication
+
+PROJECTS, AWARDS, & MORE
+
+For demos, please see chenbrian.ca/posts/projects
+
+• “butternut": Implementing gltr on CTRL to combat AI-generated text. nwHacks bronze, KPMG Data Analysis & Salesforce Award.
+• “the Humerus Bot": Directed project with UTMIST to build a NLP bot designed to win Cards Against Humanity
+• Teaching: Review content I prepared for my students, including a custom Jupyter notebook with c kernel for interactive learning
 • Awards: Schulich Leadership Scholarship nominee, Bert & Greta Quartermaine Badminton Scholarship Recipient, BC District
-Scholarship & BC Achievement Scholarship Recipient, Canada Service Corps Student Service Grant, ESROP-UofT
+Scholarship & BC Achievement Scholarship Recipient, Canada Service Corps Student Service Grant, ESROP-UofT research grant
+• Badminton: ClearOne Nationals Team, 2018 Junior Nationals Finalist, Eric Hamber Provincial Team Captain, UTBC Exec
+• Theatre: Wrote and directed full-length show: ‘To Bleach a Pigeon’. Oversaw actors, crew, set design, and creative process
 
-
+
 ```
 
 
